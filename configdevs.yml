@@ -1,0 +1,13 @@
+### push templated configs to devices
+
+---
+
+  - hosts: labswitch2
+
+    tasks:
+      - name: push_configs_from_configs_folder
+        ios_config:
+          src: "./configs/{{inventory_hostname}}.txt"  
+
+
+      

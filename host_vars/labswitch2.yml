@@ -1,0 +1,8 @@
+---
+# LABSW1 specific connectivity info
+ansible_user: "admin"
+
+hostname:
+  name: labswitch2
+  
+  

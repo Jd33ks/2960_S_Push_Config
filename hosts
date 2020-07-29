@@ -1,0 +1,8 @@
+## Ansible Hosts File
+
+[CATALYST_2960]
+labswitch2 ansible_host=192.168.10.2 
+
+
+
+

@@ -1,0 +1,22 @@
+---
+  switches:
+    - hostname: LAB_SWITCH_2
+      enable_secret: admin
+      loopback: 1.1.1.1 255.255.255.255
+      username: admin
+      password: admin 
+      ################
+      vlan: 10
+      interface: 192.168.1.1 255.255.255.0
+      ####################################
+      gateway: 172.16.1.100
+      ####################################
+
+
+    
+    
+
+    
+
+
+

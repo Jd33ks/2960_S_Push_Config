@@ -1,0 +1,260 @@
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service password-encryption
+no ip domain-lookup
+!
+hostname {{item.hostname}}
+!
+interface loopback 0
+desc loopbackip address {{item.loopback}}
+!
+interface GigabitEthernet 1/0/1
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/2
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/3
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/4
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/5
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/6
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/7
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/8
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/9
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/10
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/11
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/12
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/13
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/14
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/15
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/16
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/17
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/18
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface gigabitEthernet 1/0/19
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/20
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/21
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/22
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/23
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+interface GigabitEthernet 1/0/24
+description ##access port##
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+no shut
+
+!
+enable secret {{item.enable_secret}}
+username {{item.username}} privilege 15 password {{ item.password }}
+boot-start-marker
+boot-end-marker!
+logging buffered 32000
+no logging console
+!
+aaa new-model
+!
+aaa authentication login default local
+aaa authorization exec default local 
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+ !
+interface vlan {{item.vlan}}
+description access_vlan 
+address {{item.interface}}
+no ip route-cache
+no shut 
+!
+ip default-gateway {{ item.gateway }}
+no ip http server
+no ip http secure-server
+!
+banner login ^C
+============NOTICE==============
+  *All logins are monitored*
+================================
+^C
+!
+
+line con 0
+line vty 0 4
+ logging synchronous
+ transport input ssh telnet
+ login authentication default
+line vty 5 15
+logging synchronous
+transport input ssh 
+login authentication default
+
+
+
+
+
+
+
+
